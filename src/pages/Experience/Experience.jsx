@@ -55,11 +55,11 @@ const ExperienceSection = () => {
   const experiences = [
     {
       icon: Code2,
-      title: "Freelancing",
-      company: "7miners.in",
-      period: "Feb-2025 ",
+      title: "Full Stack Developer - Full Time Intern",
+      company: "Specular Graphics Private Limited",
+      period: "Dec 2025 - Jan 2026 ",
       description:
-        "Developed a ecommerce platform of product listing, filtering, cart, and order management systems. Designed responsive UI with Tailwind CSS, ensuring smooth experience across devices. Delivered within deadline, achieving 100% client satisfaction and repeat work offer.",
+        "Worked mainly on backend debugging and feature fixes for an internal platform used to showcase the company’s graphical projects to other businesses. Developed a ecommerce platform of product listing, filtering, cart, and order management systems. Designed responsive UI with Tailwind CSS, ensuring smooth experience across devices. Delivered within deadline, achieving 100% client satisfaction and repeat work offer.",
     },
  
     {

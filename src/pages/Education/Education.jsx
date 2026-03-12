@@ -4,48 +4,60 @@ import Mongo from "../../assets/images/mongo.jpg";
 import codingCompetition from "../../assets/images/codingCompetition.png"
 import LogoMaking from "../../assets/images/logoMaking.jpg";
 import Psol from "../../assets/images/problemSolving.jpg";
-import {
-  Star,
-  Award,
-  Calendar,
-  BookOpen,
-  GraduationCap,
-  Trophy,
-} from "lucide-react";
-import { motion } from "framer-motion";
+import intern from "../../assets/images/intern.jpeg"
+import gopalan from "../../assets/images/gopalan.jpeg"
+ 
+import { motion } from "framer-motion"; 
 
 const EducationSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
- 
+
   const educationData = [
-    { 
+  
+    {
       img: codingCompetition,
       achievements: [],
       skills: [],
       description:
         "",
     },
-    { 
-      img: Mongo,
+      {
+      img: Psol,
       achievements: [],
       skills: [],
       description:
         "",
     },
-    { 
+    {
       img: LogoMaking,
       achievements: [],
       skills: [],
       description:
         "",
     },
-    { 
-      img: Psol,
+    {
+      img: gopalan,
       achievements: [],
       skills: [],
       description:
         "",
-    }
+    },
+      {
+      img: intern,
+      achievements: [],
+      skills: [],
+      description:
+        "",
+    },
+
+    {
+      img: Mongo,
+      achievements: [],
+      skills: [],
+      description:
+        "",
+    },
+  
   ];
 
   const containerVariants = {
@@ -90,7 +102,7 @@ const EducationSection = () => {
             Certifications and Awards
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            I have completed various certifications and received awards that showcase my dedication to continuous learning and excellence in my field. <br/> Here are some of the highlights:
+            I have completed various certifications and received awards that showcase my dedication to continuous learning and excellence in my field. <br /> Here are some of the highlights:
           </p>
         </motion.div>
 
@@ -104,51 +116,23 @@ const EducationSection = () => {
             <motion.div
               key={index}
               variants={cardVariants}
-              className={`relative border rounded-xl p-8 transition-all duration-300 bg-gray-900/50 backdrop-blur-sm ${
-                hoveredIndex === index
+              className={`relative border justify-center items-center flex rounded-xl p-8 transition-all duration-300 bg-gray-900/50 backdrop-blur-sm ${hoveredIndex === index
                   ? "border-teal-500 scale-[1.02]"
                   : "border-blue-400/20"
-              }`}
+                }`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="space-y-6">
-              
-                      <img src={edu.img} alt="" />
+              <div className="space-y-6 ">
 
-                {/* <div className="space-y-3">
-                  <h4 className="text-sm font-semibold text-white flex items-center gap-2">
-                    <Trophy className="w-4 h-4 text-yellow-500" />
-                    Key Achievements
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {edu.achievements.map((achievement, i) => (
-                      <div
-                        key={i}
-                        className="px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 flex items-center gap-2 text-sm"
-                      >
-                        <Award className="w-4 h-4" />
-                        <span>{achievement}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div> */}
+                <img src={edu.img} alt="" />
 
-                {/* <div className="flex flex-wrap gap-2">
-                  {edu.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 text-xs rounded bg-blue-500/10 text-blue-300"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div> */}
+                
               </div>
             </motion.div>
           ))}
 
- 
+
 
 
         </motion.div>

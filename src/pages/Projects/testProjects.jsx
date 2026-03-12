@@ -1,14 +1,15 @@
 import { ReactLenis } from "lenis/react";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef, useState } from "react";
-import rapidchat from "../../assets/images/rapidchat.png"
+// import rapidchat from "../../assets/images/rapidchat.png"
+import rapidchat from "../../assets/images/RAPID.png"
 import tourdeindia from "../../assets/images/tourdeindia.jpg"
 
 const projects = [
   {
     title: "Rapid Chat",
     description:
-      "Revolutionizing tourism with a state-of-the-art platform powered by Next.js, Tailwind CSS, Lama AI, Botpress, and Firebase. TourDeIndia delivers an immersive exploration of India's rich culture and breathtaking landscapes. Key features include AI-driven travel recommendations, real-time chatbot assistance, and a seamless, user-friendly interface.",
+      "Rapid Chat is a real-time chat application built with React, Node.js, Express, MongoDB, Redis, and Socket.io supporting instant messaging, an AI chatbot, and PeerJS-based video calls. It uses JWT authentication, a responsive Tailwind UI, and is deployed with Vercel (frontend) and Render (backend).",
     src: "", 
     url: rapidchat,
     color: "#5196fd",
