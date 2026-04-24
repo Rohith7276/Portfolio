@@ -50,6 +50,13 @@ const EducationSection = () => {
       description:
         "",
     },
+    {
+      img: Mongo,
+      achievements: [],
+      skills: [],
+      description:
+        "",
+    },
       {
       img: intern,
       achievements: [],
@@ -58,13 +65,6 @@ const EducationSection = () => {
         "",
     },
 
-    {
-      img: Mongo,
-      achievements: [],
-      skills: [],
-      description:
-        "",
-    },
   
   ];
 
