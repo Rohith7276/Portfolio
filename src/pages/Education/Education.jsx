@@ -5,6 +5,7 @@ import codingCompetition from "../../assets/images/codingCompetition.png"
 import LogoMaking from "../../assets/images/logoMaking.jpg";
 import Psol from "../../assets/images/problemSolving.jpg";
 import intern from "../../assets/images/intern.jpeg"
+import gcem from "../../assets/images/gcem.jpeg"
 import gopalan from "../../assets/images/gopalan.jpeg"
  
 import { motion } from "framer-motion"; 
@@ -14,6 +15,13 @@ const EducationSection = () => {
 
   const educationData = [
   
+    {
+      img: gcem,
+      achievements: [],
+      skills: [],
+      description:
+        "",
+    },
     {
       img: codingCompetition,
       achievements: [],
