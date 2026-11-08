@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Send, Phone, MapPin, Mail } from "lucide-react";
-import emailjs from "@emailjs/browser";
+import { Send, MapPin, Mail, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,6 +11,7 @@ export default function Contact() {
 
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = () => {
     let tempErrors = {};
@@ -43,74 +43,66 @@ export default function Contact() {
     setErrors(tempErrors);
     return isValid;
   };
-  const chekOut = async (details) => { 
 
-    emailjs
-      .send(
-         'service_68r60xm',
-         'template_htomh8o',
-        {
-          from_name: details.name,
-          to_name: "Rohith H P",
-          message: `Portfolio message:
-          email: ${details.email}
-          subject: ${details.subject}
-          message: ${details.message} `,
-        },
-         'bcSRN2KeXB1EKefYJ'
-      )
-      .then(
-        () => {
-          setStatus("Email sent successfully");
-        },
-        (error) => {
-          setStatus("Failed to send email:", error);
-        }
-      );
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
-      setStatus("Please fill in all required fields correctly.");
+      setStatus({
+        type: "error",
+        message: "Please fill in all required fields correctly.",
+      });
       return;
     }
 
-    chekOut(formData)
+    setIsSubmitting(true);
+    setStatus(null);
 
-    // Create a new FormData object to send to Web3Forms API
-    // const form = new FormData();
-    // // form.append("access_key", "0dd2892b-00dd-4aa9-a36f-e5c4a77b660c"); // Replace with your Web3Forms access key
-    // form.append("name", formData.name);
-    // form.append("email", formData.email);
-    // form.append("subject", formData.subject || "New Contact Form Submission");
-    // form.append("message", formData.message);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "0dd2892b-00dd-4aa9-a36f-e5c4a77b660c",
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || "New Portfolio Contact Message",
+          message: formData.message,
+        }),
+      });
 
-    // try {
-    //   // Send form data to Web3Forms API
-    //   const response = await fetch("https://api.web3forms.com/submit", {
-    //     method: "POST",
-    //     body: form,
-    //   });
+      const result = await response.json();
 
-    //   const result = await response.json();
-    //   console.log(result)
-    //   if (response.ok) {
-    //     setStatus("Message sent successfully!");
-    //     setFormData({
-    //       name: "",
-    //       email: "",
-    //       subject: "",
-    //       message: "",
-    //     });
-    //     setErrors({});
-    //   } else {
-    //     setStatus(result.message || "There was an error sending your message.");
-    //   }
-    // } catch (error) {
-    //   setStatus("An error occurred. Please try again.");
-    //   console.error("Error:", error);
-    // }
+      if (response.ok && result.success) {
+        setStatus({
+          type: "success",
+          message: "Thank you! Your message has been sent successfully.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setErrors({});
+      } else {
+        setStatus({
+          type: "error",
+          message: result.message || "Failed to send message. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus({
+        type: "error",
+        message: "An error occurred while sending your message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -127,8 +119,8 @@ export default function Contact() {
                 <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                   Get in Touch!
                 </h2>
-                <p className="text-gray-300 text-lg">
-                  Feel free to reach out for any queries, collaboration opportunities, or projects you'd like to work on together. I'm always open to learning, connecting, and exploring new possibilities. Looking forward to hearing from you!
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Feel free to reach out for any queries, collaboration opportunities, or projects you&apos;d like to work on together. I&apos;m always open to learning, connecting, and exploring new possibilities. Looking forward to hearing from you!
                 </p>
               </div>
 
@@ -156,7 +148,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="backdrop-blur-lg bg-white/5 p-8 rounded-2xl shadow-xl">
+            <div className="backdrop-blur-lg bg-white/5 p-8 rounded-2xl shadow-xl border border-white/10">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6">
 
@@ -233,22 +225,37 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-blue-500/20"
                 >
-                  <span>Send Message</span>
-                  <Send className="w-4 h-4" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
 
               {/* Status Message */}
               {status && (
                 <div
-                  className={`mt-4 text-center ${status.includes("success")
-                    ? "text-green-400"
-                    : "text-red-400"
+                  className={`mt-4 p-3 rounded-lg text-sm flex items-center justify-center gap-2 ${status.type === "success"
+                    ? "bg-green-500/10 border border-green-500/20 text-green-400"
+                    : "bg-red-500/10 border border-red-500/20 text-red-400"
                     }`}
                 >
-                  <p>{status}</p>
+                  {status.type === "success" ? (
+                    <CheckCircle className="w-4 h-4 shrink-0" />
+                  ) : (
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                  )}
+                  <p>{status.message}</p>
                 </div>
               )}
             </div>

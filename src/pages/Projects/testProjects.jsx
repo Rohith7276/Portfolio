@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Rapid Chat",
     description:
-      "Rapid Chat is a real-time chat application built with React, Node.js, Express, MongoDB, Redis, and Socket.io supporting instant messaging, an AI chatbot, and PeerJS-based video calls. It uses JWT authentication, a responsive Tailwind UI, and is deployed with Vercel (frontend) and Render (backend).",
+      "Rapid Chat is a real-time AI collaboration platform integrating RAG, LLMs, vector embeddings, and WebRTC supporting 20+ concurrent users in video calls and synchronized streaming. Architected with React, Node.js, Express, MongoDB, Docker, and Redis cache-aside caching, reducing API response time by 45% while minimizing redundant LLM inference.",
     src: "", 
     url: rapidchat,
     color: "#5196fd",

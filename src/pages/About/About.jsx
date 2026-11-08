@@ -23,15 +23,18 @@ export default function About() {
 
             </div>
 
-            <div className="relative h-fit ">
-              <p className="text-white">
+            <div className="relative h-fit space-y-4">
+              <p className="text-white text-xl font-semibold">
                 Hi, I’m Rohith.
               </p>
-              <p>
-                I am an aspiring Software Engineer & Developer with a deep passion for coding and problem-solving. I enjoy building something new every day—whether it's an innovative project, a handy tool, or a creative solution to a challenge. Beyond writing code, I bring curiosity, adaptability, and a strong work ethic, allowing me to contribute effectively to teams and projects. I'm always eager to take on new challenges, refine my skills, and explore fresh ideas.
+              <p className="text-gray-300 leading-relaxed">
+                I am a Software Developer experienced in building AI-powered and full-stack applications using React, Node.js, and REST APIs. I have developed LLM-integrated solutions with Retrieval-Augmented Generation (RAG), semantic retrieval, and intelligent document processing while architecting scalable backend systems with Redis, Docker, and Socket.io.
               </p>
-              <p>
-                Thank you for visiting my portfolio and taking the time to explore my work!{" "}
+              <p className="text-gray-300 leading-relaxed">
+                With a strong foundation in problem-solving and software engineering, I enjoy building high-impact platforms—from real-time collaborative applications to performant, client-facing enterprise tools.
+              </p>
+              <p className="text-cyan-400 font-medium">
+                Thank you for visiting my portfolio and taking the time to explore my work!
               </p>
 
             </div>
