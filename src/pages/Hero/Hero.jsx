@@ -54,7 +54,7 @@ const profile = {
     skills: [
         'React', 'NextJS', 'NodeJS', 'ExpressJS', 'MongoDB',  
         'JavaScript', 'HTML', 'CSS', 'TailwindCSS', 'Bootstrap', 
-        'Daisy UI', 'Firebase', 'Redis', 'C++', 'Typescript'
+        'Daisy UI', 'Firebase', 'Redis', 'AWS', 'Docker', 'C++', 'Typescript'
     ],
     hardWorker: true,
     quickLearner: true,

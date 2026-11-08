@@ -11,7 +11,7 @@ import {
   FaGitAlt,
   FaLinux,
   FaFigma,
-
+  FaAws,
 } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -179,6 +179,10 @@ const SkillsSection = () => {
       title: "Cloud & DevOps",
       color: "text-orange-400",
       skills: [
+        {
+          name: "AWS",
+          icon: <FaAws className="w-4 h-4 text-[#FF9900]" />,
+        },
         {
           name: "Docker",
           icon: <FaDocker className="w-4 h-4 text-[#2496ED]" />,

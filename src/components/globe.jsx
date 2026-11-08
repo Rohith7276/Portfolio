@@ -18,6 +18,7 @@ const slugs = [
   "vercel",  
   "cypress",
   "docker",
+  "amazonwebservices",
   "git", 
   "github",
   "gitlab",
